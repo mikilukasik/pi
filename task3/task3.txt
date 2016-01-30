@@ -7,3 +7,11 @@ assume that the first char index is 1, so odd char.
     Input - "a", Output - "a";
     Input - "ab", Output - "ab";
     Input - "abc", Output - "cba";
+    
+    
+
+
+3.a) Write the same functionality in a AngularJS App without a creation of a AngularJs Directive.
+
+3.b) Write the same functionality with a AngularJs Directive in a AngularJS App.
+ 
