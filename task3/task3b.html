@@ -1,93 +1,120 @@
-
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-	
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="reverser.js"></script>
+	<script src="test3.js"></script>
+
 	<script>
-	
 	var appModule = angular.module("appModule", []);
-    
-        appModule.filter('reverser',function(){
-        
-        var reverser=function(str){
-            
-            var charsToReverse=[]
-            var charsToKeep=[]
-            var len=str.length
 
-            var result=''
+	appModule.filter('reverser', function() {
 
-            var i=0
+		return function(inStr) {
+			return inStr ? reverser(inStr) : undefined
+		}
 
-            while(i<len){
-                
-                if(i % 2 == 0){
-                    charsToReverse.push(str[i])
-                }else{
-                    charsToKeep.push(str[i])
-                }
-                
-                i++
-                
-            }
+	})
 
-            i=0
+	appModule.directive('reversed', [function() {
+		return {
+			restrict: 'E',
+			scope: {
+				'input': '='
+			},
+			template: '{{input | reverser}}'
 
-            while(i<len){
-                var tempChar
-                
-                if(i % 2 == 0){
-                    tempChar=charsToReverse.pop()
-                    if(tempChar)result=result.concat(tempChar)
-                }else{
-                    tempChar=charsToKeep.shift()
-                    if(tempChar)result=result.concat(tempChar)
-                }
-                
-                i++
-
-            }
-
-            return result
-
-        }
-        
-        
-        
-        return function (inStr){
-            return inStr ? reverser(inStr) : undefined
-        }
-    })
-    
-    appModule.directive('reversed', [function() {
-        return {
-            restrict:'E',
-            scope:{
-                'input':'='
-            },
-            template:'{{input | reverser}}'
-           
-        }
-    }])
+		}
+	}])
 
 	</script>
-	
+
 </head>
 
 <body>
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../task1/task1.html">task1</a>
-        <a href="../task2/task2.html">task2</a>
-        <a href="task3.html">task3</a>
-        <a href="task3a.html">task3a</a>
-        <a>task3b</a>
-    </nav>   
+	<nav>
+		<a href="../index.html">Home</a>
+		<a href="../task1/task1.html">task1</a>
+		<a href="../task2/task2.html">task2</a>
+		<a href="task3.html">task3</a>
+		<a href="task3a.html">task3a</a>
+		<a style="background:orange">task3b</a>
+	</nav>
+	<br><br>
+	<div ng-app="appModule">
+		<div style="background:lightblue;height:6em;padding-left:1em">
+          <br>
+          <label>Input: </label><input ng-model='input'></input>
+		  <br><br>
+		  <label>Result: </label><reversed input='input'></reversed>
+          
+		</div>
+        
+	</div>
     
-    <div  ng-app="appModule">
-        <label>Input: </label><input ng-model='input'></input>
-        <br>
-        <label>Result:</label><reversed input='input'></reversed>
-    </div>
+    <table>
+			<tr>
+				<td>
+					<h4>Task 3</h4>
+					<h5>The task is to produce a funtion that reverses only the odd characters in a string, then use it in an AngularJS app with and without creating a custom directive.</h5>
+
+					<div style="font-size:0.8em">
+						<p>Write a function reverse(s) only the odd characters in a string, assume that the first char index is 1, so odd char.</p>
+						<p>Example:<pre>
+             
+    Input - "test", Output - "sett";
+    Input - "", Output - "";
+    Input - "a", Output - "a";
+    Input - "ab", Output - "ab";
+    Input - "abc", Output - "cba";
+      
+        </pre>
+
+							<p><strong>3.a) </strong> Write the same functionality in a AngularJS App without a creation of a AngularJs Directive.</p>
+							<br>
+							<p style="background:orange"><strong>3.b) </strong> Write the same functionality with a AngularJs Directive in a AngularJS App.</p>
+
+					</div>
+				</td>
+				<td>
+					<h4>Solution</h4>
+					<div style="font-size:0.8em">
+
+						<p>In task3 the global reverser function can be called from the console with the following syntax:</p>
+						<pre>
+    reverser(inputString)
+                            </pre>
+						<h4>It consists of the below steps:</h4>
+						<ol>
+							<li>splits the string in two strings, storing the odd characters the first, the even ones in the second</li>
+							<li>combines the two strings back to one by taking characters one by one from different ends of the two strings created in the previos step</li>
+
+						</ol>
+						<br>
+						<p>When the task3 page initializes, it runs some tests confirming that the function produces the desired result. The test log is displayed on the console.</p>
+
+
+						<p>The test function can be called from the console with the below syntax:</p>
+						<pre>
+    test(inputString)    
+                        </pre>
+						<p>This will run the reverser function and compare the actual result with the expected one.</p>
+						<p>In 3/a the AngularJS app has a filter that is using the above function. This way the functionality can be dynamically visualised with 2 lines in the HTML code:</p>
+						<pre>
+    &#60;label&#62;Input: htrml&#60;/label&#62;&#60;input ng-model="input"&#62;&#60;/input&#62;
+   
+    &#60;label&#62;Result: &#60;/label&#62;{{input | reverser}}      
+                        </pre>
+
+						<p style="background:orange">In 3/b the AngularJS app has a directive that is using the above mentioned filter. Again, the functionality can be dynamically visualised with 2 lines in the HTML code:</p>
+						<pre style="background:orange">
+    &#60;label&#62;Input: &#60;/label&#62;&#60;input ng-model='input'&#62;&#60;/input&#62;
+    
+    &#60;label&#62;Result: &#60;/label&#62;&#60;reversed input='input'&#62;&#60;/reversed&#62;      
+                        </pre>
+
+					</div>
+				</td>
+			</tr>
+		</table>
 </body>

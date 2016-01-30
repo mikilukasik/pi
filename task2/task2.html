@@ -12,14 +12,62 @@
     <nav>
         <a href="../index.html">Home</a>
         <a href="../task1/task1.html">task1</a>
-        <a>task2</a>
+        <a style="background:orange">task2</a>
         <a href="../task3/task3.html">task3</a>
         <a href="../task3/task3a.html">task3a</a>
         <a href="../task3/task3b.html">task3b</a>
     </nav>   
     
-    <h2>Task 2</h2>
+    <table>
+			<tr>
+				<td>
+					<h4>Task 2</h4>
+					<h5>The task is to produce a funtion that returns an array from 2 initial arrays by shuffling them together. </h5>
+
+					<div style="font-size:0.8em">
+						<p>You have to create a function "compoundArray" which should take as input two int arrays. They can have different lengths, and return one int array with numbers from both arrays shuffled one by one from each input array.</p>
+						<p>Example:<pre>
+             
+    Input1 - [1,2,3,4,5,6], Input2 - [9,8,7,6], Output - [1,9,2,8,3,7,4,6,5,6];
+    Input1 - [1,2], Input2 - [9,8,7,6] Output - [1,9,2,8,7,6];
+    Input1 - [1,2,3,4,5,6], Input2 - [], Output - [1,2,3,4,5,6];
+    Input1 - [], Input2 - [9,8,7,6], Output - [9,8,7,6];
+    Input1 - [], Input2 - [], Output - [];
     
-    <h4>The task is to produce a funtion that returns an array from 2 initial arrays applying various rules. </h4>
-        
+        </pre>
+					</div>
+				</td>
+				<td>
+					<h4>Solution</h4>
+					<div style="font-size:0.8em">
+
+						<p>Two separate functions are available:</p>
+						<pre>
+    compoundArray(intArray1,intArray2)
+    
+                &
+                
+    compound32Array(int32Array1,int32Array2)
+    
+                        </pre>
+						<p>The function <strong>compoundArray</strong> takes 2 regular JavaScript arrays and returns a third one, while function <strong>compound32Array</strong> takes 2 typed arrays, and gives another typed array as result.
+						</p>
+
+						<p>When the task page initializes, it runs some tests confirming that the function produces the desired result. The test log is displayed on the console.</p>
+
+
+						<p>Two test functions can be called from the console with the below syntax:</p>
+						<pre>
+    test(inputArray1,inputArray2,expectedResult)
+    
+                &
+                
+    test32(inputArray1,inputArray2,expectedResult)
+                        </pre>
+						<p> These will run the corresponding compoundArray function and compare the actual results with the expected one. The compound32Array function takes two regular arrays as arguments and converts them to typed arrays before running the test.</p>
+
+					</div>
+				</td>
+			</tr>
+		</table>
 </html>

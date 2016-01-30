@@ -4,7 +4,10 @@
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
-
+    
+<script>
+    console.log('Functionality and tests are not available on the home page. Please use the navigation bar and select the task you would like to test.')
+</script>
 
 </head>
 
@@ -21,10 +24,11 @@
 		<h2>P-I Test</h2>
 
 		<p>The test cosnsists of the below 3 tasks. You can use each tasks functions and run their tests by using the console (F12) and the navigation bar above.</p>
-		<table>
+		<hr>
+        <table>
 			<tr>
 				<td>
-					<h4>Task 1</h4>
+					<h4><a href="task1/task1.html">Task 1</a></h4>
 					<h5>The task is to produce a funtion that returns a string from 2 initial strings applying various rules. </h5>
 
 					<div style="font-size:0.8em">
@@ -100,10 +104,11 @@
 				</td>
 			</tr>
 		</table>
+        <hr>
 		<table>
 			<tr>
 				<td>
-					<h4>Task 2</h4>
+					<h4><a href="task2/task2.html">Task 2</a></h4>
 					<h5>The task is to produce a funtion that returns an array from 2 initial arrays by shuffling them together. </h5>
 
 					<div style="font-size:0.8em">
@@ -152,11 +157,11 @@
 				</td>
 			</tr>
 		</table>
-
+        <hr>
 		<table>
 			<tr>
 				<td>
-					<h4>Task 3</h4>
+					<h4><a href="task3/task3.html">Task 3</a></h4>
 					<h5>The task is to produce a funtion that reverses only the odd characters in a string, then use it in an AngularJS app with and without creating a custom directive.</h5>
 
 					<div style="font-size:0.8em">
@@ -170,41 +175,49 @@
     Input - "abc", Output - "cba";
       
         </pre>
-        
-        <p><strong>3.a) </strong> Write the same functionality in a AngularJS App without a creation of a AngularJs Directive.</p>
-        <br>
-        <p><strong>3.b) </strong> Write the same functionality with a AngularJs Directive in a AngularJS App.</p>
-        
+
+							<p><strong>3.a) </strong> Write the same functionality in a AngularJS App without a creation of a AngularJs Directive.</p>
+							<br>
+							<p><strong>3.b) </strong> Write the same functionality with a AngularJs Directive in a AngularJS App.</p>
+
 					</div>
 				</td>
 				<td>
 					<h4>Solution</h4>
 					<div style="font-size:0.8em">
 
-						<p>Two separate functions are available:</p>
+						<p>In task3 the global reverser function can be called from the console with the following syntax:</p>
 						<pre>
-    compoundArray(intArray1,intArray2)
-    
-                &
-                
-    compound32Array(int32Array1,int32Array2)
-    
-                        </pre>
-						<p>The function <strong>compoundArray</strong> takes 2 regular JavaScript arrays and returns a third one, while function <strong>compound32Array</strong> takes 2 typed arrays, and gives another typed array as result.
-						</p>
+    reverser(inputString)
+                            </pre>
+						<h4>It consists of the below steps:</h4>
+						<ol>
+							<li>splits the string in two strings, storing the odd characters the first, the even ones in the second</li>
+							<li>combines the two strings back to one by taking characters one by one from different ends of the two strings created in the previos step</li>
 
-						<p>When the task page initializes, it runs some tests confirming that the function produces the desired result. The test log is displayed on the console.</p>
+						</ol>
+						<br>
+						<p>When the task3 page initializes, it runs some tests confirming that the function produces the desired result. The test log is displayed on the console.</p>
 
 
-						<p>Two test functions can be called from the console with the below syntax:</p>
+						<p>The test function can be called from the console with the below syntax:</p>
 						<pre>
-    test(inputArray1,inputArray2,expectedResult)
-    
-                &
-                
-    test32(inputArray1,inputArray2,expectedResult)
+    test(inputString)    
                         </pre>
-						<p> These will run the corresponding compoundArray function and compare the actual results with the expected one. The compound32Array function takes two regular arrays as arguments and converts them to typed arrays before running the test.</p>
+						<p>This will run the reverser function and compare the actual result with the expected one.</p>
+						<p>In 3/a the AngularJS app has a filter that is using the above function. This way the functionality can be dynamically visualised with 2 lines in the HTML code:</p>
+						<pre>
+    &#60;label&#62;Input: htrml&#60;/label&#62;&#60;input ng-model="input"&#62;&#60;/input&#62;
+   
+    &#60;label&#62;Result: &#60;/label&#62;{{input | reverser}}      
+                        </pre>
+
+						<p>In 3/b the AngularJS app has a directive that is using the above mentioned filter. Again, the functionality can be dynamically visualised with 2 lines in the HTML code:</p>
+						<pre>
+    &#60;label&#62;Input: &#60;/label&#62;&#60;input ng-model='input'&#62;&#60;/input&#62;
+    
+    &#60;label&#62;Result: &#60;/label&#62;&#60;reversed input='input'&#62;&#60;/reversed&#62;      
+                        </pre>
 
 					</div>
 				</td>
