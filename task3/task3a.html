@@ -7,11 +7,10 @@
 	
 	var appModule = angular.module("appModule", []);
     
-    appModule.controller("ApplicationController", ApplicationController);
-
-	function ApplicationController($scope) {
-	
-	    var reverser=function(str){
+    appModule.filter('reverser',function(){
+        
+        var reverser=function(str){
+            
             var charsToReverse=[]
             var charsToKeep=[]
             var len=str.length
@@ -21,6 +20,7 @@
             var i=0
 
             while(i<len){
+                
                 if(i % 2 == 0){
                     charsToReverse.push(str[i])
                 }else{
@@ -35,6 +35,7 @@
 
             while(i<len){
                 var tempChar
+                
                 if(i % 2 == 0){
                     tempChar=charsToReverse.pop()
                     if(tempChar)result=result.concat(tempChar)
@@ -51,17 +52,18 @@
 
         }
         
-        $scope.reverseIt=function(str){
-            $scope.reversed=  reverser(str)
+        
+        
+        return function (inStr){
+            return inStr ? reverser(inStr) : undefined
         }
-	
-	}
-	
+    })
+
 	</script>
 	
 </head>
 
-<body ng-app="appModule" ng-controller="ApplicationController">
+<body>
     <nav>
         <a href="../index.html">Home</a>
         <a href="../task1/task1.html">task1</a>
@@ -71,14 +73,9 @@
         <a href="task3b.html">task3b</a>
     </nav>   
     
-    
-	<label>Input: </label>
-	<input ng-model="input" ng-change="reverseIt(input)"></input>
-    <br>
-    <label>Result:</label>
-    {{reversed}}
-	
-	
-	
-
+    <div  ng-app="appModule">
+        <label>Input: </label><input ng-model="input"></input>
+        <br>
+        <label>Result:</label>{{input | reverser}}
+    </div>
 </body>
