@@ -1,0 +1,24 @@
+nav{
+   background: lightblue;
+   width: 100%;
+   position: fixed;
+   top: 0;
+}
+body{
+        font-family:arial
+}
+table{
+    background:#eeeeee;
+    border-collapse: collapse
+}
+tr{
+    vertical-align:top;
+    
+}
+td{
+    border:1em solid white;
+    
+}
+.sel{
+    background: orange
+}
