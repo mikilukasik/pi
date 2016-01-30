@@ -1,5 +1,6 @@
 You have to create a function "compoundArray" which should take as input two int arrays. 
-They can have different lengths, and return one int array with numbers from both arrays shuffled one by one from each input array.
+They can have different lengths, and return one int array with numbers from both arrays 
+shuffled one by one from each input array.
 
     Example: 
     

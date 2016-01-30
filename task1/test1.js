@@ -1,11 +1,6 @@
 var succeeded=0
 var failed=0
 
-var resetCounter=function(){
-    succeeded=0
-    failed=0
-}
-
 var test=function(s1,s2,expected){
     
     
