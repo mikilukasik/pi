@@ -7,7 +7,8 @@ var compoundArray=function(intArray1,intArray2){
     var i=0
     
     while(i<l1){
-        result.push(intArray1[i],intArray2[i])
+        if(intArray1[i])result.push(intArray1[i])
+        if(intArray2[i])result.push(intArray2[i])
         i++
     }
     
