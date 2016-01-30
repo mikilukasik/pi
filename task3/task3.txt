@@ -1,0 +1,9 @@
+Write a function reverse(s) only the odd characters in a string, 
+assume that the first char index is 1, so odd char.
+
+    Example:  
+    Input - "test", Output - "sett";
+    Input - "", Output - "";
+    Input - "a", Output - "a";
+    Input - "ab", Output - "ab";
+    Input - "abc", Output - "cba";
